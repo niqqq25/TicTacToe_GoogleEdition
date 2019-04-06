@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  header {
+    text-align: center;
+    margin: 1vw 0 2vw 0;
+  }
+  
+  header > h1 {
+    font-size: 4vw;
+    color: #555555;
+  }
+
+  #result-field{
+    width: 40vw;
+    height: 3vw;
+    margin: 0 auto 1vw auto;
+    text-align: center;
+  }
+  .result-button{
+    display: inline-block;
+    width: 35%;
+    height: 100%;
+    border-radius: 5px;
+    margin: 0 5%;
+    padding: 0 1%;
+    box-shadow: -2px 3px 11px -3px rgba(176,176,176,1);
+    cursor: pointer;
+  }
+  .selected-result-button{
+    box-shadow: 0px 0.15vw 0px 0px #0DA192, -2px 3px 11px -3px rgba(176,176,176,1), 0px 10px 30px -9px rgb(100, 101, 102);
+  }
+  .svg-result{
+    float: left;
+    height: 80%;
+    margin-top: 2%;
+  }
+  .result-symbol{
+    stroke: #555555;
+    fill: none;
+    stroke-width: 10;
+  }
+  .results{
+    font-size: 2.2vw;
+    color: #555555;
+    float: right;
+    margin-right: 0.5vw;
+    line-height: 3vw;
+  }
+  #restart-button{
+    width: 25vw;
+    height: 3.5vw;
+    border-radius: 0.5vw;
+    margin: 1.5vw auto 20px auto;
+    box-shadow: -2px 3px 15px -3px rgba(176,176,176,1);
+    cursor: pointer;
+    text-align: center;
+    line-height: 3.5vw;
+  }
+  #restart-button:active{
+    box-shadow: -2px 5px 10px 2px rgba(176,176,176,1);
+  }
+  #restart-button-text{
+    color: #0DA192;
+    font-weight: bold;
+    font-size: 1.5vw;
+  }
+  #turn-box{
+    width: 15vw;
+    height: 1.5vw;
+    margin: 0 auto 1vw auto;
+    text-align: center;
+    line-height: 1.5vw;
+    color: #555555;
+    font-size: 1vw;
+  }
+
+#outer-board-field{
+  background: #14BDAC;
+  width: 100%;
+  padding: 2.5vw 0;
+}
+
+#board {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.8vw;
+  margin: 0 auto;
+  width: 20vw;
+  height: 20vw;
+}
+  
+#board-background {
+  position: absolute;
+  background: #0DA192;
+  margin: 0 auto;
+  width: 19.99vw;
+  height: 19.99vw;
+  animation: board-background 1s ease-in;
+}
+
+.board-box {
+  z-index: 2;
+  background: #14BDAC;
+  display: inline-grid;
+  justify-items: center;
+  align-items: center;
+}
+.svg-inside-box {
+  height: 100%;
+}
+.o {
+  /*circle*/
+  stroke: #F2EBD3;
+  fill: none;
+  stroke-width: 10px;
+  stroke-dasharray: 252;
+  animation: drawCircle 0.2s ease-in;
+}
+.x {
+  /*cross*/
+  stroke: #545454;
+  fill: none;
+  stroke-width: 10px;
+  stroke-dasharray: 114;
+  animation: drawCross 0.2s ease-in;
+}
+#board-svg {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#line-svg {
+  --dashoffset-for-line: 20vw;
+  stroke-width: 0.60vw;
+  animation: drawLine 0.5s ease-in;
+}
+#victory-or-draw-field{
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #14BDAC;
+}
+.victory-or-draw-field-upper-box{
+  display: block;
+  height: 50%;
+  margin: 10% auto 0 auto;
+}
+#victory-or-draw-field-lower-box{
+  margin-top: 5%;
+  height: 5vw;
+  line-height: 5vw;
+  text-align: center;
+  color: #545454;
+  font-weight: bold;
+  font-size: 3vw;
+}
+
+@keyframes board-background {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes drawCircle {
+  from {
+    stroke-dashoffset: 252;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes drawCross {
+  from {
+    stroke-dashoffset: 114;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: var(--dashoffset-for-line);
+  }
+  to {
+    stroke-dashoffset: 0vw;
+  }
+}
+@media (max-width: 800px){
+  header{
+    margin-bottom: 20px;
+  }
+  header > h1 {
+    font-size: 35px;
+    color: #555555;
+  }
+  #result-field{
+    width: 350px;
+    height: 25px;
+    margin-bottom: 20px;
+  }
+  .results{
+    font-size: 18px;
+    margin-right: 5px;
+    line-height: 25px;
+  }
+  .result-button{
+    width: 38%;
+  }
+  #turn-box{
+    width: 200px;
+    height: 20px;
+    margin-bottom: 10px;
+    line-height: 20px;
+    font-size: 12px;
+  }
+  #outer-board-field{
+    padding: 40px 0;
+  }
+  #board {
+    grid-gap: 10px;
+    width: 300px;
+    height: 300px;
+  }
+  #board-background{
+    width: 298px;
+    height: 298px;
+  }
+  #restart-button{
+    width: 260px;
+    height: 36px;
+    border-radius: 5px;
+    margin: 30px auto 20px auto;
+    line-height: 36px;
+  }
+  #restart-button-text{
+    font-size: 16px;
+  }
+  #line-svg {
+    stroke-width: 10px;
+  }
+  #victory-or-draw-field-lower-box{
+    height: 50px;
+    line-height: 50px;
+    font-size: 36px;
+  }
+}
