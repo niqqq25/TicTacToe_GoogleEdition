@@ -117,16 +117,14 @@
 .svg-inside-box {
   height: 100%;
 }
-.o {
-  /*circle*/
+.circle {
   stroke: #F2EBD3;
   fill: none;
   stroke-width: 10px;
   stroke-dasharray: 252;
   animation: drawCircle 0.2s ease-in;
 }
-.x {
-  /*cross*/
+.cross {
   stroke: #545454;
   fill: none;
   stroke-width: 10px;
@@ -144,19 +142,19 @@
   stroke-width: 0.60vw;
   animation: drawLine 0.5s ease-in;
 }
-#victory-or-draw-field{
+#victory-screen, #draw-screen{
   z-index: 2;
   position: absolute;
   width: 100%;
   height: 100%;
   background: #14BDAC;
 }
-.victory-or-draw-field-upper-box{
+#victory-screen-top, #draw-screen-top{
   display: block;
   height: 50%;
   margin: 10% auto 0 auto;
 }
-#victory-or-draw-field-lower-box{
+#victory-screen-bottom, #draw-screen-bottom{
   margin-top: 5%;
   height: 5vw;
   line-height: 5vw;
@@ -192,7 +190,7 @@
 }
 @keyframes drawLine {
   from {
-    stroke-dashoffset: var(--dashoffset-for-line);
+    stroke-dashoffset: 100%;
   }
   to {
     stroke-dashoffset: 0vw;
@@ -256,4 +254,11 @@
     line-height: 50px;
     font-size: 36px;
   }
+}
+
+#algorithms {
+  float: left;
+  margin-left: 20px;
+  font-size: 28px;
+  border: 0;
 }
